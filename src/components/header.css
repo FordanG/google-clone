@@ -1,0 +1,32 @@
+ul {
+  padding: 0;
+  margin: 0 !important;
+  text-align: right;
+}
+
+ul li {
+  display: inline-block;
+  padding-right: 15px;
+}
+
+a {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.87) !important;
+  text-decoration: none !important;
+  line-height: 24px;
+  outline: none;
+  vertical-align: middle;
+}
+
+.nav {
+  height: 47px !important;
+}
+
+.apps {
+  color: #000;
+  opacity: 0.55;
+}
+
+.account {
+  border-radius: 50%;
+}
