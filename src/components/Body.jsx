@@ -8,6 +8,25 @@ import Logo from '../assets/images/google-logo.png';
 const Body = () => {
   const [input, setInput] = useState('');
 
+  const handleSubmit = () => {
+    // eslint-disable-next-line
+    if (!input) {
+      // eslint-disable-next-line
+      alert("Don't leave it blank");
+    } else {
+      const query = input.trim().replace(' ', '+');
+      const link = `https://www.google.com/search?q=${query}`;
+      window.location.href = link;
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.charCode === 13) {
+      handleSubmit();
+      console.log('working');
+    }
+  };
+
   return (
     <>
       <Container className="body-container">
@@ -29,6 +48,7 @@ const Body = () => {
                   onChange={(e) => {
                     setInput(e.target.value);
                   }}
+                  onKeyPress={handleKeyPress}
                 />
                 <div>
                   <svg
@@ -60,17 +80,7 @@ const Body = () => {
           <Col>
             <GButton
               message="Google Search"
-              searchSubmit={() => {
-                // eslint-disable-next-line
-                if (!input) {
-                  // eslint-disable-next-line
-                  alert("Don't leave it blank");
-                } else {
-                  const query = input.trim().replace(' ', '+');
-                  const link = `https://www.google.com/search?q=${query}`;
-                  window.location.href = link;
-                }
-              }}
+              searchSubmit={handleSubmit}
             />
             <GButton
               message="I'm Feeling Lucky"
