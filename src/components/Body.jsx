@@ -61,7 +61,9 @@ const Body = () => {
             <GButton
               message="Google Search"
               searchSubmit={() => {
+                // eslint-disable-next-line
                 if (!input) {
+                  // eslint-disable-next-line
                   alert("Don't leave it blank");
                 } else {
                   const query = input.trim().replace(' ', '+');
