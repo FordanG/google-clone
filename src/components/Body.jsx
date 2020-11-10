@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import './body.css';
 import SearchIcon from '@material-ui/icons/Search';
@@ -6,6 +6,8 @@ import GButton from './Button';
 import Logo from '../assets/images/google-logo.png';
 
 const Body = () => {
+  const [input, setInput] = useState('');
+
   return (
     <>
       <Container className="body-container">
@@ -21,7 +23,13 @@ const Body = () => {
                 <div className="search-icon">
                   <SearchIcon className="search-icon-pd" />
                 </div>
-                <input type="text" className="search-input" />
+                <input
+                  type="text"
+                  className="search-input"
+                  onChange={(e) => {
+                    setInput(e.target.value);
+                  }}
+                />
                 <div>
                   <svg
                     className="mic"
@@ -50,8 +58,24 @@ const Body = () => {
         </Row>
         <Row className="text-center mb-2">
           <Col>
-            <GButton message="Google Search" />
-            <GButton message="I'm Feeling Lucky" />
+            <GButton
+              message="Google Search"
+              searchSubmit={() => {
+                if (!input) {
+                  alert("Don't leave it blank");
+                } else {
+                  const query = input.trim().replace(' ', '+');
+                  const link = `https://www.google.com/search?q=${query}`;
+                  window.location.href = link;
+                }
+              }}
+            />
+            <GButton
+              message="I'm Feeling Lucky"
+              href={() => {
+                window.location.href = 'https://testing-library.com/';
+              }}
+            />
           </Col>
         </Row>
         <Row className="text-center">

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const GButton = (props) => {
-  const { message } = props;
+  const { message, searchSubmit, href } = props;
   const StyledButton = styled.button`
     background-image: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
     background-color: #f2f2f2;
@@ -21,10 +21,11 @@ const GButton = (props) => {
     cursor: pointer;
     user-select: none;
   `;
-
   return (
     <>
-      <StyledButton>{message}</StyledButton>
+      <StyledButton onClick={searchSubmit || href}>
+        {message}
+      </StyledButton>
     </>
   );
 };
